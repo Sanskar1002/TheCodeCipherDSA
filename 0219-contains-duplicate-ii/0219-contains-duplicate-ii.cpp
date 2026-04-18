@@ -4,7 +4,7 @@ public:
         unordered_set<int> st;
         for(int i=0;i<nums.size();i++){
 
-            if(i>k){
+            if(st.size()>k){
                 st.erase(nums[i-k-1]);
             }
             if(st.count(nums[i])){
