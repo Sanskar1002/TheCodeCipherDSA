@@ -1,33 +1,29 @@
 class Solution {
 
     private:
-        bool isFeasible(int weight,int days,vector<int>& weights){
-            int tempw = 0;
-            int d = 0;
+        bool isFeasible(int capacity,int days,vector<int>& weights){
+            int currentLoad = 0;
+            int requiredDays = 1;
             int n = weights.size();
             for(int i = 0;i<n;i++){
-                if(weights[i]>weight){
-                    return false;
-                }
-                tempw+=weights[i];
-                if(tempw>weight){
-                    d++;
-                    tempw = 0;
-                    i--;
+                // if(weights[i]>weight){
+                //     return false;
+                // }
+                currentLoad+=weights[i];
+                if(currentLoad>capacity){
+                    requiredDays++;
+                    currentLoad = weights[i];
                 }
             }
 
-            if(tempw<=weight){
-                d++;
-            }
 
-            return d<=days;
+            return requiredDays<=days;
         }
 
 
 public:
     int shipWithinDays(vector<int>& weights, int days) {
-        int lo =1 ;
+        int lo = *max_element(weights.begin(), weights.end()); ;
         int hi = 0;
         
         int n = weights.size();
