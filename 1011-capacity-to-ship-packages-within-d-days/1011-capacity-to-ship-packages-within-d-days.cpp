@@ -6,9 +6,9 @@ class Solution {
             int requiredDays = 1;
             int n = weights.size();
             for(int i = 0;i<n;i++){
-                // if(weights[i]>weight){
-                //     return false;
-                // }
+                if(weights[i]>capacity){
+                    return false;
+                }
                 currentLoad+=weights[i];
                 if(currentLoad>capacity){
                     requiredDays++;
@@ -23,7 +23,7 @@ class Solution {
 
 public:
     int shipWithinDays(vector<int>& weights, int days) {
-        int lo = *max_element(weights.begin(), weights.end()); ;
+        int lo = 1; 
         int hi = 0;
         
         int n = weights.size();
