@@ -16,7 +16,7 @@ public:
             return -1;
         }
         int lo = 1;
-        int hi = INT_MAX;
+        int hi = 1e7;
         int ans = -1;;
 
         while(lo<=hi){
